@@ -15,7 +15,7 @@ void LevelC::initialise()
         TILE_SIZE, 4, 1, mOrigin
     );
 
-    // ----------- PLAYER -----------
+    //Player
     std::map<Direction, std::vector<int>> knightAnim = {
         {RIGHT, {0,1,2,3,4,5,6,7}}, {LEFT, {0,1,2,3,4,5,6,7}},
     };
@@ -30,13 +30,13 @@ void LevelC::initialise()
     mGameState.player->setColliderDimensions({30.0f, 50.0f});
     mGameState.player->setAcceleration({0.0f, GRAVITY});
 
-    // ----------- ENEMIES (default ctor + setters) -----------
+    // ENEMIES
     mGameState.enemyCount = 5;
     mGameState.enemies = new Entity[mGameState.enemyCount];
 
     float mapLeft = mOrigin.x - (LEVEL_WIDTH * TILE_SIZE) / 2.0f;
 
-    // --- Slime Wanderers (0, 1) ---
+    //Slime Wanderers 
     std::map<Direction, std::vector<int>> slimeAnim = {
         {RIGHT, {0,1,2,3}}, {LEFT, {0,1,2,3}},
     };
@@ -64,7 +64,7 @@ void LevelC::initialise()
     mGameState.enemies[1].setPosition({mapLeft + 30 * TILE_SIZE, mOrigin.y + TILE_SIZE * 2});
     mGameState.enemies[1].setPatrolBounds(mapLeft + 28 * TILE_SIZE, mapLeft + 33 * TILE_SIZE);
 
-    // --- Skeleton Follower (2) ---
+    // Skeleton Follower
     std::map<Direction, std::vector<int>> skelAnim = {
         {RIGHT, {0,1,2,3,4,5,6,7,8,9}}, {LEFT, {0,1,2,3,4,5,6,7,8,9}},
     };
@@ -84,7 +84,7 @@ void LevelC::initialise()
     mGameState.enemies[2].setDirection(LEFT);
     mGameState.enemies[2].setPosition({mapLeft + 20 * TILE_SIZE, mOrigin.y + TILE_SIZE * 2});
 
-    // --- Demon Flyers (3, 4) ---
+    //Demon Flyers 
     std::map<Direction, std::vector<int>> demonAnim = {
         {RIGHT, {0,1,2,3}}, {LEFT, {0,1,2,3}},
     };
@@ -115,7 +115,7 @@ void LevelC::initialise()
     mGameState.enemies[4].setPatrolBounds(mapLeft + 25 * TILE_SIZE, mapLeft + 33 * TILE_SIZE);
     mGameState.enemies[4].setFlightParams(flyY, 50.0f);
 
-    // ----------- EXIT DOOR -----------
+    // EXIT DOOR 
     float mapRight = mOrigin.x + (LEVEL_WIDTH * TILE_SIZE) / 2.0f;
     mGameState.doorTexture = LoadTexture("assets/game/door.png");
     mGameState.exitPosition = {mapRight - 2.5f * TILE_SIZE, mOrigin.y + TILE_SIZE * 0.5f};

@@ -32,7 +32,7 @@ Entity::Entity(Vector2 position, Vector2 scale, const char *textureFilepath,
 
 Entity::~Entity() { UnloadTexture(mTexture); }
 
-// ==================== COLLISION ====================
+//Collision
 
 void Entity::checkCollisionY(Entity *collidableEntities, int collisionCheckCount)
 {
@@ -169,7 +169,7 @@ bool Entity::checkEnemyCollision(Entity *enemies, int enemyCount)
     return false;
 }
 
-// ==================== ANIMATION ====================
+//Animation
 
 void Entity::animate(float deltaTime)
 {
@@ -189,7 +189,7 @@ void Entity::animate(float deltaTime)
     }
 }
 
-// ==================== AI ====================
+// AI 
 
 void Entity::AIWander()
 {
@@ -252,7 +252,7 @@ void Entity::AIActivate(Entity *target)
     }
 }
 
-// ==================== UPDATE ====================
+//Update
 
 void Entity::update(float deltaTime, Entity *player, Map *map,
     Entity *collidableEntities, int collisionCheckCount)
@@ -304,7 +304,7 @@ void Entity::update(float deltaTime, Entity *player, Map *map,
         animate(deltaTime);
 }
 
-// ==================== RENDER ====================
+//Render
 
 void Entity::render()
 {

@@ -15,7 +15,7 @@ void LevelB::initialise()
         TILE_SIZE, 4, 1, mOrigin
     );
 
-    // ----------- PLAYER -----------
+    // Player
     std::map<Direction, std::vector<int>> knightAnim = {
         {RIGHT, {0,1,2,3,4,5,6,7}}, {LEFT, {0,1,2,3,4,5,6,7}},
     };
@@ -30,13 +30,13 @@ void LevelB::initialise()
     mGameState.player->setColliderDimensions({30.0f, 50.0f});
     mGameState.player->setAcceleration({0.0f, GRAVITY});
 
-    // ----------- ENEMIES (default ctor + setters) -----------
+    //ENEMIES 
     mGameState.enemyCount = 3;
     mGameState.enemies = new Entity[mGameState.enemyCount];
 
     float mapLeft = mOrigin.x - (LEVEL_WIDTH * TILE_SIZE) / 2.0f;
 
-    // --- Slime Wanderers (0, 1) ---
+    //Slime Wanderers
     std::map<Direction, std::vector<int>> slimeAnim = {
         {RIGHT, {0,1,2,3}}, {LEFT, {0,1,2,3}},
     };
@@ -64,7 +64,7 @@ void LevelB::initialise()
     mGameState.enemies[1].setPosition({mapLeft + 22 * TILE_SIZE, mOrigin.y + TILE_SIZE * 2});
     mGameState.enemies[1].setPatrolBounds(mapLeft + 22 * TILE_SIZE, mapLeft + 25 * TILE_SIZE);
 
-    // --- Skeleton Follower (2) ---
+    //Skeleton Follower (2) 
     std::map<Direction, std::vector<int>> skelAnim = {
         {RIGHT, {0,1,2,3,4,5,6,7,8,9}}, {LEFT, {0,1,2,3,4,5,6,7,8,9}},
     };
@@ -84,7 +84,7 @@ void LevelB::initialise()
     mGameState.enemies[2].setDirection(LEFT);
     mGameState.enemies[2].setPosition({mapLeft + 16 * TILE_SIZE, mOrigin.y + TILE_SIZE * 2});
 
-    // ----------- EXIT DOOR -----------
+    //EXIT DOOR 
     float mapRight = mOrigin.x + (LEVEL_WIDTH * TILE_SIZE) / 2.0f;
     mGameState.doorTexture = LoadTexture("assets/game/door.png");
     mGameState.exitPosition = {mapRight - 2.5f * TILE_SIZE, mOrigin.y + TILE_SIZE * 0.5f};

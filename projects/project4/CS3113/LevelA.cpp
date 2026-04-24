@@ -15,7 +15,7 @@ void LevelA::initialise()
         TILE_SIZE, 4, 1, mOrigin
     );
 
-    // ----------- PLAYER (use new) -----------
+    //Player (use new)
     std::map<Direction, std::vector<int>> knightAnim = {
         {RIGHT, {0,1,2,3,4,5,6,7}},
         {LEFT,  {0,1,2,3,4,5,6,7}},
@@ -31,7 +31,7 @@ void LevelA::initialise()
     mGameState.player->setColliderDimensions({30.0f, 50.0f});
     mGameState.player->setAcceleration({0.0f, GRAVITY});
 
-    // ----------- ENEMIES (default ctor + setters to avoid texture unload) -----------
+    //ENEMIES
     mGameState.enemyCount = 2;
     mGameState.enemies = new Entity[mGameState.enemyCount];
 
@@ -64,7 +64,7 @@ void LevelA::initialise()
     mGameState.enemies[1].setPosition({mapLeft + 18 * TILE_SIZE, mOrigin.y + TILE_SIZE * 2});
     mGameState.enemies[1].setPatrolBounds(mapLeft + 15 * TILE_SIZE, mapLeft + 20 * TILE_SIZE);
 
-    // ----------- EXIT DOOR -----------
+    //EXIT DOOR
     float mapRight = mOrigin.x + (LEVEL_WIDTH * TILE_SIZE) / 2.0f;
     mGameState.doorTexture = LoadTexture("assets/game/door.png");
     mGameState.exitPosition = {mapRight - 2.5f * TILE_SIZE, mOrigin.y + TILE_SIZE * 0.5f};
